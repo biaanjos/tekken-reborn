@@ -1,0 +1,57 @@
+<!-- tag::all[] -->
+<!-- tag::head[] -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Tekken Reborn</title>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+</head>
+
+<body>
+<h1>Design your hero!</h1>
+
+<!-- tag::formTag[] -->
+<form method="POST" th:object="${fighter}">
+
+  <div class="fighter-group">
+    <h3>Designate your fighter:</h3>
+    <div class="hero-input">
+      <label for="name">Name: </label>
+      <input type="text" th:field="*{name}" id="name" placeholder="Name" />
+    </div>
+
+    <div class="hero-input">
+      <label for="damage">Damage per hit: </label>
+      <input type="number" th:field="*{damagePerHit}" id="damage" placeholder="Damage per hit" />
+    </div>
+
+    <div class="hero-input">
+      <label for="health">Health: </label>
+      <input type="number" th:field="*{health}" id="health" placeholder="Health" />
+    </div>
+
+    <div class="hero-input">
+      <label for="resistance">Resistance: </label>
+      <input type="number" th:field="*{resistance}" id="resistance" placeholder="Resistance" />
+    </div>
+
+    <div class="hero-input" id="anime">
+      <h3>Pick your hero anime:</h3>
+      <div th:each="anime : ${animes}">
+        <input type="checkbox" th:field="*{animeFrom}" th:value="${anime}" />
+        <span th:text="${anime}">Anime</span><br />
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-btn">
+    <button><b>Submit Your Fighter</b></button>
+  </div>
+  <!-- tag::closeFormTag[] -->
+</form>
+<!-- end::closeFormTag[] -->
+</body>
+
+</html>
+<!-- end::all[] -->
