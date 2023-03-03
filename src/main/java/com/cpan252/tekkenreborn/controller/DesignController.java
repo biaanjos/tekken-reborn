@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DesignController {
 
     @Autowired
-    private FighterRepository fighterRepository;
+    private FighterRepository repository;
 
     @GetMapping("/design")
     public String design() {
@@ -47,7 +47,7 @@ public class DesignController {
         if (fighter.getName() == null || fighter.getHealth() < 1000 || fighter.getDamagePerHit()  > 100 || fighter.getResistance() < 0 || fighter.getResistance() > 10 ){
             return "error";
         }
-        fighterRepository.save(fighter);
+        repository.save(fighter);
         return "redirect:/fighterlist";
     }
 

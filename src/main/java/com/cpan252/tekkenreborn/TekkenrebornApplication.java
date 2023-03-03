@@ -1,14 +1,10 @@
 package com.cpan252.tekkenreborn;
 
-import java.math.BigDecimal;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.cpan252.tekkenreborn.controller.HomeController;
 import com.cpan252.tekkenreborn.model.Fighter;
 import com.cpan252.tekkenreborn.model.Fighter.Anime;
 import com.cpan252.tekkenreborn.repository.FighterRepository;

@@ -1,14 +1,15 @@
 package com.cpan252.tekkenreborn.model;
 
-import java.time.LocalDateTime;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-
+import java.time.LocalDate;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Fighter {
     public enum Anime {
         NARUTO("Naruto"), BLEACH("Bleach"), TEKKEN("Tekken"), ONE_PIECE("One Piece"),
@@ -26,6 +27,7 @@ public class Fighter {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -37,12 +39,10 @@ public class Fighter {
     private double resistance;
     private Anime animeFrom;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-    public Fighter(){
+    private LocalDate createdAt = LocalDate.now();
 
-    }
     public Fighter(String name, int damagePerHit, int health, double resistance, Anime animeFrom) {
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDate.now();
         this.name = name;
         this.damagePerHit = damagePerHit;
         this.health = health;
@@ -52,7 +52,7 @@ public class Fighter {
 
     public Fighter(Long id, String name, int damagePerHit, int health, double resistance, Anime animeFrom) {
         this.id = id;
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDate.now();
         this.name = name;
         this.damagePerHit = damagePerHit;
         this.health = health;
