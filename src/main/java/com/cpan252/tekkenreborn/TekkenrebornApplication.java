@@ -22,6 +22,12 @@ public class TekkenrebornApplication {
 			repository.save(new Fighter("Aaron", 95,1001,8,Anime.NARUTO));
 			repository.save(new Fighter("Dustin", 80,2050,7,Anime.BLEACH));
 			repository.save(new Fighter("Ethan", 85,3000,6,Anime.DRAGON_BALL));
+			repository.save(new Fighter("Jason", 89,1010,5,Anime.TEKKEN));
+			repository.save(new Fighter("Tom", 81,3050,9,Anime.NARUTO));
+			repository.save(new Fighter("Brian", 94,3333,9,Anime.DRAGON_BALL));
+			repository.save(new Fighter("Kevin", 95,1001,8,Anime.NARUTO));
+			repository.save(new Fighter("Andrey", 70,1020,5,Anime.BLEACH));
+			repository.save(new Fighter("Vic", 85,3150,6,Anime.DRAGON_BALL));
 
 		};
 	}
