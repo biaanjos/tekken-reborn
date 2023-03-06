@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
@@ -15,8 +15,27 @@
 <body>
 <h1>Search fighters by Anime</h1>
 <div class="d-flex flex-row mb-3">
-
-    <div
+    <div class="d-flex flex-row mb-3">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Damage per hit</th>
+                <th scope="col">Health</th>
+                <th scope="col">Resistance</th>
+                <th scope="col">Anime</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fighter : ${fighters}">
+                <td><span th:text="${fighter.name}"/></td>
+                <td><span th:text="${fighter.damagePerHit}"/></td>
+                <td><span th:text="${fighter.health}"/></td>
+                <td><span th:text="${fighter.resistance}"/></td>
+                <td><span th:text="${fighter.animeFrom}"/></td>
+            </tbody>
+        </table>
+   <!-- <div
             class="card ms-3 me-3"
             th:each="fighter: ${fighters}"
             style="width: 18rem"
@@ -37,7 +56,7 @@
             />
             <p class="card-text" th:text="${fighter.animeFrom}"></p>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">

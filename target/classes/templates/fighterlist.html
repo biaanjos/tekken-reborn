@@ -15,13 +15,31 @@
 <body>
 <h1>All fighters</h1>
 <div class="d-flex flex-row mb-3">
-
-  <div
+      <table class="table">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Damage per hit</th>
+        <th scope="col">Health</th>
+        <th scope="col">Resistance</th>
+        <th scope="col">Anime</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="fighter : ${fighters}">
+        <td><span th:text="${fighter.name}"/></td>
+        <td><span th:text="${fighter.damagePerHit}"/></td>
+        <td><span th:text="${fighter.health}"/></td>
+        <td><span th:text="${fighter.resistance}"/></td>
+        <td><span th:text="${fighter.animeFrom}"/></td>
+      </tbody>
+    </table>
+  <!--
+    <div
           class="card ms-3 me-3"
-          th:each="fighter: ${fighters}"
           style="width: 18rem"
   >
-    <div class="card-body">
+  <div class="card-body">
       <h5 class="card-title" th:text="${fighter.name}" />
       <h6
               class="card-subtitle mb-2 text-muted"
@@ -37,7 +55,7 @@
       />
       <p class="card-text" th:text="${fighter.animeFrom}"></p>
     </div>
-</div>
+</div>-->
 </div>
 <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
   <ul class="pagination mt-5">
@@ -54,7 +72,7 @@
     <li class="page-item"><a class="page-link" th:href="@{/fighterlist/switchPage(pageToSwitch=${currentPage + 1})}">Next</a></li>
   </ul>
 </div>
-<!--<div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
+<div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
   <form class="mt-3" method="post" th:object="${fightersByDateDto}">
     <div class="mb-3">
       <label for="fighterName" class="form-label"
@@ -67,9 +85,6 @@
               th:field="*{name}"
               aria-describedby="fighterHelp"
       />
-      <div id="fighterHelp" class="form-text">
-        Provide decent fighter name prefix
-      </div>
     </div>
     <div class="mb-3">
       <label for="startDate" class="form-label">Start Date: </label>
@@ -95,7 +110,7 @@
       Search By Name Prefix and Date
     </button>
   </form>
-</div>-->
+</div>
 <!--
 <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
   <form class="mt-3" method="post" th:object="${fightersByAnime}">
