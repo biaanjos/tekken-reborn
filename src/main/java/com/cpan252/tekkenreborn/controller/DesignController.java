@@ -5,11 +5,10 @@ import java.util.EnumSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import com.cpan252.tekkenreborn.model.Fighter;
 import com.cpan252.tekkenreborn.model.Fighter.Anime;
@@ -17,15 +16,17 @@ import com.cpan252.tekkenreborn.repository.FighterRepository;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
+@RequestMapping("/design")
 public class DesignController {
 
     @Autowired
     private FighterRepository repository;
 
-    @GetMapping("/design")
+    @GetMapping
     public String design() {
         return "design";
     }
@@ -42,7 +43,7 @@ public class DesignController {
     }
 
 
-    @PostMapping("/design")
+    @PostMapping
     public String submitForm(Fighter fighter) {
         if (fighter.getName() == null || fighter.getHealth() < 1000 || fighter.getDamagePerHit()  > 100 || fighter.getResistance() < 0 || fighter.getResistance() > 10 ){
             return "error";
