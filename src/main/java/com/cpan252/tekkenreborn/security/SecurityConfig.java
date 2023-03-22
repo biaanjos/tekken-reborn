@@ -14,7 +14,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
@@ -44,7 +47,7 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-
+                .defaultSuccessUrl("/design", true)
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
@@ -53,6 +56,8 @@ public class SecurityConfig {
                 .and()
                 .csrf()
                 .ignoringRequestMatchers(toH2Console())
+                .ignoringRequestMatchers("/fighterlist")
+                .ignoringRequestMatchers("/design")
                 // Allow pages to be loaded in frames from the same origin; needed for
                 // H2-Console
                 .and()

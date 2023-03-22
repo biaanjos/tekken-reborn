@@ -14,9 +14,12 @@ import com.cpan252.tekkenreborn.model.Fighter;
 import com.cpan252.tekkenreborn.model.Fighter.Anime;
 import com.cpan252.tekkenreborn.repository.FighterRepository;
 
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.cpan252.tekkenreborn.model.User;
 
 @Controller
 @Slf4j
@@ -51,5 +54,13 @@ public class DesignController {
         repository.save(fighter);
         return "redirect:/fighterlist";
     }
+/*
+    @PostMapping("/deleteAllFighters")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String processFightersDeletion(@AuthenticationPrincipal User user) {
+        repository.deleteAll();
+        return "redirect:/design";
+    }*/
+
 
 }

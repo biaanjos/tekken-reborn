@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.Optional;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.cpan252.tekkenreborn.model.User;
 @Controller
 @RequestMapping("/fighterlist")
 public class FighterListController {
@@ -66,6 +70,13 @@ public class FighterListController {
                         LocalDate.parse(fightersByDateDto.getStartDate(), dateFormatter),
                         LocalDate.parse(fightersByDateDto.getEndDate(), dateFormatter)));
         return "fighterlist";
+    }
+
+    @PostMapping("/deleteAllFighters")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String processFightersDeletion(@AuthenticationPrincipal User user) {
+        repository.deleteAll();
+        return "redirect:/fighterlist";
     }
 /*
     @ModelAttribute

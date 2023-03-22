@@ -34,6 +34,7 @@
         <td><span th:text="${fighter.animeFrom}"/></td>
       </tbody>
     </table>
+
   <!--
     <div
           class="card ms-3 me-3"
@@ -56,6 +57,14 @@
       <p class="card-text" th:text="${fighter.animeFrom}"></p>
     </div>
 </div>-->
+</div>
+<div>
+  <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+  <form method="post" th:action="@{/fighterlist/deleteAllFighters}">
+    <button class="btn btn-primary mt-5">
+      Delete All Fighters
+    </button>
+  </form>
 </div>
 <div class="d-flex flex-column bd-highlight justify-content-center align-items-center w-75 ms-5">
   <ul class="pagination mt-5">

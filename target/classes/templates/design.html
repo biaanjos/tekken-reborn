@@ -13,7 +13,7 @@
 
 <!-- tag::formTag[] -->
 <form method="POST" th:object="${fighter}">
-
+ <!-- <input type="hidden" name="_csrf" th:value="${_csrf.token}" />-->
   <div class="fighter-group">
     <h3>Designate your fighter:</h3>
     <div class="hero-input">
@@ -48,10 +48,15 @@
   <div class="submit-btn">
     <button><b>Submit Your Fighter</b></button>
   </div>
-  <!-- tag::closeFormTag[] -->
 </form>
-<!-- end::closeFormTag[] -->
+
+<!--form method="post" th:action="@{/design/deleteAllFighters}">
+  <button class="btn btn-primary mt-5">
+    Delete All Fighters
+  </button>
+</form>-->
+
 </body>
 
 </html>
-<!-- end::all[] -->
+

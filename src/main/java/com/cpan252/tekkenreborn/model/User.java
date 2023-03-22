@@ -1,7 +1,7 @@
 package com.cpan252.tekkenreborn.model;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -24,7 +24,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        if (username.equals("admin"))
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
     @Override
     public String getPassword() {
